@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  test-server:
+    container_name: test-server-name
+    build: '.'
+    ports:
+      - "9551:9551"
+    command: serve -p 9551 -s /content
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+networks:
+  test:
+    name: test
+    driver: bridge
+  default:
+    name: test

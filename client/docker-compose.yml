@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  test-client:
+    container_name: test-client-name
+    build: '.'
+    ports:
+      - "9552:9552"
+    command: /bin/sh -c "while sleep 1000; do :; done"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+networks:
+  test:
+    external: true
+  default:
+    name: test
